@@ -46,8 +46,7 @@ treinamento = 0.6
 limite = int(treinamento * len(entradas))
 
 # Tamanho do K definido como raiz do total de entradas
-#neigh = KNeighborsClassifier(n_neighbors=math.sqrt(len(entradas)))
-neigh = KNeighborsClassifier(n_neighbors=15)
+neigh = KNeighborsClassifier(n_neighbors=int(math.sqrt(len(entradas))))
 
 # 
 neigh.fit(entradas[:limite], saidas[:limite])
