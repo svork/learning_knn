@@ -14,6 +14,9 @@ from sklearn.neighbors import KNeighborsClassifier
 # Importando biblioteca math
 import math
 
+# Importando biblioteca random
+import random
+
 # Listas para conter os atributos de cada registro
 entradas, saidas = [], []
 
@@ -48,10 +51,10 @@ limite = int(treinamento * len(entradas))
 # Tamanho do K definido como raiz do total de entradas
 neigh = KNeighborsClassifier(n_neighbors=int(math.sqrt(len(entradas))))
 
-# 
+# Treinamento
 neigh.fit(entradas[:limite], saidas[:limite])
 
-# 
+# Classificar os valores
 labels = neigh.predict(entradas[limite:])
 
 # Contagem de acertos
@@ -66,14 +69,12 @@ print("Total de treinamento: %d" % limite)
 print("Total de testes: %d" % (len(entradas) - limite))
 print("Total de acertos: %d" % acertos)
 print("Porcento de acertos: %.2f" % (100 * acertos / (len(entradas) - limite)))
-#print("Limite: " + str(limite))
+print("\n")
 
-print("\n\n")
-teste = 15
-
+# Escolher um elemento ao acaso
+teste = int(random.random() * 100)
 print("Atributos do elemento %d" % (limite + teste))
 print(entradas[limite + teste])
-
 print("Classe do elemento")
 print(saidas[limite + teste])
 print("Classe encontrada")
